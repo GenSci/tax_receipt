@@ -1,0 +1,19 @@
+{
+    "debt_payments": {
+        "percentage": 0.0125
+    },
+    "defense": {
+        "percentage": 0.0543,
+        "components": {
+            "acquisitions": {
+                "percentage": 0.012
+            },
+            "staffing": {
+                "percentage": 0.022
+            },
+        },
+        "social_security": {
+            "percentage": 0.0895
+        }
+    }
+}
