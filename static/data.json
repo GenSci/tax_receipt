@@ -1,19 +1,29 @@
 {
-    "debt_payments": {
-        "percentage": 0.0125
+    "Net Interest": {
+        "percentage": 2.1
     },
-    "defense": {
-        "percentage": 0.0543,
+    "Defense and International": {
+        "percentage": 3.8,
         "components": {
-            "acquisitions": {
-                "percentage": 0.012
+            "Acquisitions": {
+                "percentage": 1.2,
+                "bill": "H.R. 1024 - 2017",
+                "law": "5 U.S.C. 1234"
             },
-            "staffing": {
-                "percentage": 0.022
-            },
-        },
-        "social_security": {
-            "percentage": 0.0895
+            "Staffing": {
+                "percentage": 0.9
+            }
         }
+    },
+    "Social Security and Medicare": {
+        "percentage": 8.3,
+        "bill": "S. 154 - 2016",
+        "law": "42 U.S.C. §§ 301-1305 (Suppl. 4 1934)"
+    },
+    "Other Payments to Individuals": {
+        "percentage": 6.3
+    },
+    "Other Federal Payments": {
+        "percentage": 0.7
     }
 }
