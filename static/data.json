@@ -1,29 +1,29 @@
 {
     "Net Interest": {
-        "percentage": 2.1
+        "percentage": 0.021
     },
     "Defense and International": {
-        "percentage": 3.8,
+        "percentage": 0.038,
         "components": {
             "Acquisitions": {
-                "percentage": 1.2,
+                "percentage": 0.012,
                 "bill": "H.R. 1024 - 2017",
                 "law": "5 U.S.C. 1234"
             },
             "Staffing": {
-                "percentage": 0.9
+                "percentage": 0.009
             }
         }
     },
     "Social Security and Medicare": {
-        "percentage": 8.3,
+        "percentage": 0.083,
         "bill": "S. 154 - 2016",
         "law": "42 U.S.C. §§ 301-1305 (Suppl. 4 1934)"
     },
     "Other Payments to Individuals": {
-        "percentage": 6.3
+        "percentage": 0.063
     },
     "Other Federal Payments": {
-        "percentage": 0.7
+        "percentage": 0.07
     }
 }

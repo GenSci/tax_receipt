@@ -25,7 +25,7 @@
                         <div class="divider"></div>
                         <p>The purpose of this web page is to demontrate a proposal for a receipt that each U.S. tax payer should be able to access for every year they pay their taxes.  The concept is that the amount paid by each citizen should be broken down into the major categories => individual programs that are funded by those taxes.  An ultimate goal of the drill down would be to get to individual bills in either the House or Senate.  This level of transparency, it is hoped, would foster more informed discussions between members of Congress and their constituents as well as a greater sense of involvement for tax payers in the programs they fund.</p>
                         <p class="disclaimer">
-                            All data presented here is not accurate.  Neither the bills/laws cited or dollar figures are strictly accurate.  Data is presented here only to demonstrate the potential for this data visualization.
+                            All data presented here is not accurate.  Neither the bills/laws cited nor dollar figures are strictly accurate.  Data is presented here only to demonstrate the potential for this data visualization.
                         </p>
                     </div>
                 </div>
@@ -40,8 +40,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div id="tax_graph" class="col s12">
-                        <svg height="500", width="960"></svg>
+                    <div  class="col s12">
+                        <svg id="tax_graph" height="500", width="960"></svg>
                     </div>
                 </div>
                 <div id="tax_table" class="row">
@@ -59,5 +59,11 @@
 <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
     <script src="static/index.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function(){
+            drawGraphPie();
+            assignGraph();
+        })
+    </script>
     </body>
 </html>
