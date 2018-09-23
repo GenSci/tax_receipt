@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>Tax Receipt Proposal</title>
           <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
         <link rel="stylesheet" href="static/materialize.min.css">
         <link rel="stylesheet" href="static/index.css">
     </head>
@@ -11,8 +12,11 @@
         <!-- Header Section -->
         <header>
             <nav class="nav-wrapper light-blue lighten-2">
-                <div class="container  center-align">
-                    <span class="flow-text">Proposed Tax Receipt</span>
+                <div class="container  right-align ">
+                    <a href="https://github.com/supermanzer/tax_receipt" class="indigo-text text-darken-4">
+                        <i class="fab fa-github"> </i>
+                        Go To Repo
+                    </a>
                 </div>
             </nav>
         </header>
@@ -40,8 +44,8 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div  class="col s12">
-                        <svg id="tax_graph" height="500", width="960"></svg>
+                    <div id="graph_col" class="col s12">
+                        <svg id="tax_graph" height="500", width="920"></svg>
                     </div>
                 </div>
                 <div id="tax_table" class="row">
@@ -54,14 +58,20 @@
 
         </footer>
     <script src="static/materialize.min.js" charset="utf-8"></script>
-    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <!-- <script src="static/d3.min.js" charset="utf-8"></script> -->
+
+     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="https://d3js.org/d3-color.v1.min.js"></script>
 <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
 <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
     <script src="static/index.js" charset="utf-8"></script>
     <script type="text/javascript">
         document.addEventListener('DOMContentLoaded', function(){
-            drawGraphPie();
+            var resp = fetch('static/data.json')
+                        .then(resp => resp.json())
+                        .then(budget => {
+                            drawGraphPie(budget);
+                        })
             assignGraph();
         })
     </script>

@@ -25,3 +25,23 @@ index.html page.
 .gd-purple {
     background-image: linear-gradient( 135deg, #3B2667 10%, #BC78EC 100%);
 }
+
+div.tooltip {
+    position: absolute;
+    text-align: center;
+    padding: 10px;
+    font: 12px sans-serif;
+    background: white;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+strong.title {
+    font-weight: bold;
+    color: #0c1d71;
+}
+span.funds {
+    font-weight: 800;
+    color:  #064707;
+}
