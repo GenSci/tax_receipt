@@ -3,7 +3,7 @@
 A means of visualizing the major Federal programs to which your tax dollars were allocated, written in D3.js.
 
 <h1 align="center">
-    <img src="static/images/tax_receipt_scrrenshot.png" width="220">
+    <img src="https://github.com/supermanzer/tax_receipt/blob/master/static/images/tax_receipt_screenshot.png" width="220">
 </h1>
 
 ## Motivation
