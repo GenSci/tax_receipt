@@ -45,3 +45,8 @@ span.funds {
     font-weight: 800;
     color:  #064707;
 }
+
+tr.highlighted {
+    background-color: #b3e5fc;
+    font-weight: bold;
+}

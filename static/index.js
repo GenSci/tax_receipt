@@ -6,15 +6,15 @@ A series of JavaScript functions supporting the
 generation of a tax receipt page
 */
 
+// TODO: Build out a legend that illustrates the levels into which the table and graph have descended.  Allow zooming back out by clicking on legend entries.
+
 // Creating a function to zoom into a specific area
 function zoomIn(arc, d) {
     if (!d.data.components) {
         return false
     }
     var selected = d3.select(arc);
-    
-
-
+    // TODO: Build out a redrawing of the graph using the components inherent in this arc.
 }
 // Creating some useful global variables
 var top_level = {'name': 'Federal Budget'};
@@ -30,6 +30,11 @@ function tooltipString(d) {
               "% of taxes paid.</span>"
     return strHtml;
 }
+
+/*
+shapeData - A function used to encapsulate the transforming of the data passed in to either function to make it suitable for graphing, table purposes.
+*/
+
 
 function drawGraphPie(data, taxes_paid=10489) {
     var svg = d3.select('svg'),
@@ -118,12 +123,16 @@ function drawGraphPie(data, taxes_paid=10489) {
         div.html(tooltipString(d))
         .style("left", d3.event.pageX+'px')
         .style("top", d3.event.pageY+'px');
+        var row = document.getElementById(d.data.name);
+        row.classList.add('highlighted');
         });
     // hiding tooltip on mouseout
     arc.on("mouseout", function(d){
         div.transition()
             .duration(500)
             .style("opacity", 0);
+        var row = document.getElementById(d.data.name);
+        row.classList.remove('highlighted');
     });
     arc.on("click", function(d){
         let myArc = this;
@@ -131,15 +140,88 @@ function drawGraphPie(data, taxes_paid=10489) {
     })
 };
 
+/*
+assignGraph -  Function to bind te drawGraphPie function to the button prssed to update the graph with a new amount of taxes paid
+*/
 function assignGraph() {
     let elem = document.querySelector('#update_graph')
     elem.addEventListener('click', function(){
         let taxes_paid = +document.querySelector('#taxes_paid').value;
-        document.getElementById('tax_graph').innerHTML="";
+
         fetch('static/data.json')
             .then(resp=>resp.json())
             .then(budget => {
+                document.getElementById('tax_graph').innerHTML="";
                 drawGraphPie(budget, taxes_paid)
+                document.getElementById('tax_table').innerHTML="";
+                drawTable(budget, taxes_paid)
             });
     });
+}
+
+/*
+drawTable - A function for drawing an HTML table representing the same data in numerical format.
+*/
+function drawTable(budget, taxes_paid=10489) {
+    // Appending our general table elements
+    var table =d3.select('#tax_table').append('table'),
+        thead = table.append('thead'),
+        tbody = table.append('tbody'),
+        cols = ['Component/Program', 'Percent', 'Funds', 'Bill', 'Law'];
+
+    // Building header row
+    thead.append('tr').selectAll('th')
+    .data(cols).enter()
+    .append('th').text(function(col) {
+        return col;
+    });
+    // Now we transform our data
+    table_data = tableData(budget,taxes_paid);
+    // Now let's make rows for each item in our array of table data.
+    var rows = tbody.selectAll('tr')
+                .data(table_data)
+                .enter()
+                .append('tr')
+                .attr('id', function(d){
+                    return d.name;
+                });
+    // Create a cell in each for for each item
+    var cols = Object.keys(table_data[0]);
+    var cells = rows.selectAll('td')
+                .data(function(row) {
+                    return cols.map(function(col){
+                        return {col: col, val: row[col]};
+                    });
+                }).enter()
+                .append('td')
+                    .text(function (d){
+                        if (d.col == "percent") {
+                            return percentFormat(d.val*100) + "%"
+                        } else if (d.col == 'funds') {
+                            return "$" + cashFormat(d.val)
+                        } else {
+                            return d.val
+                        }
+                    });
+    return table;
+}
+// I really REALLY want to be able to encapsulate this!  But d3 can be persnickity.
+function tableData(budget, tax) {
+    var t_data = new Array();
+    for (var comp in budget) {
+        if (budget.hasOwnProperty(comp)) {
+            let tab_obj = {
+                name: comp,
+                percent: +budget[comp].percentage,
+                funds: +budget[comp].percentage * tax,
+                bill: budget[comp].hasOwnProperty('bill') ? budget[comp].bill : 'N/A',
+                law: budget[comp].hasOwnProperty('law') ? budget[comp].law : 'N/A'
+            };
+            if (budget[comp].hasOwnProperty('components')){
+                tab_obj['components'] = budget[comp].components;
+            }
+            t_data.push(tab_obj);
+        }
+    }
+    return t_data;
 }
