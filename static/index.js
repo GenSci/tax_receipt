@@ -8,6 +8,22 @@ generation of a tax receipt page
 
 // TODO: Build out a legend that illustrates the levels into which the table and graph have descended.  Allow zooming back out by clicking on legend entries.
 
+function clearTaxes(){
+    document.getElementById('tax_graph').innerHTML="";
+    document.getElementById('tax_table').innerHTML="";
+
+}
+function clearTooltip() {
+    var tts = document.querySelectorAll('div.tooltip');
+    for (var i = 0; i < tts.length; i++) {
+        tts[i].setAttribute('opacity', 0);
+    }
+}
+
+function getTaxes() {
+    let taxes_paid = +document.querySelector('#taxes_paid').value;
+    return taxes_paid;
+}
 // Creating a function to zoom into a specific area
 function zoomIn(arc, d) {
     if (!d.data.components) {
@@ -15,6 +31,13 @@ function zoomIn(arc, d) {
     }
     var selected = d3.select(arc);
     // TODO: Build out a redrawing of the graph using the components inherent in this arc.
+    var new_budget = d.data.components;
+    var taxes = getTaxes();
+    clearTaxes();
+    clearTooltip();
+    drawGraphPie(new_budget, taxes);
+    drawTable(new_budget, taxes);
+
 }
 // Creating some useful global variables
 var top_level = {'name': 'Federal Budget'};
@@ -30,6 +53,14 @@ function tooltipString(d) {
               "% of taxes paid.</span>"
     return strHtml;
 }
+// Building out a linked anchor element from bill or law string
+function lawLink(str) {
+    spacereg = '\s';
+    let linkstr ='https://google.com/#q=' + str.replace(spacereg,'%20');
+    // astr = '<a target="" href="' + linkstr +'">' + str + '</a>';
+
+    return linkstr
+}
 
 /*
 shapeData - A function used to encapsulate the transforming of the data passed in to either function to make it suitable for graphing, table purposes.
@@ -43,9 +74,13 @@ function drawGraphPie(data, taxes_paid=10489) {
         radius = Math.min(width, height) / 2,
         g = svg.append('g').attr('transform', 'translate(' + ((width/2) - 40) + ',' + height/2 + ')');
 
-    var div = d3.select("body").append("div")
-                .attr("class", "tooltip")
-                .style("opacity", 0);
+    var div = d3.select('div.tooltip');
+    if (div.empty()) {
+        var div = d3.select("body").append("div")
+                    .attr("class", "tooltip")
+                    .style("opacity", 0);
+    }
+
     // Building a pie function
     var pie = d3.pie().sort(null)
             .value(function(d){ return d.funds});
@@ -199,7 +234,7 @@ function drawTable(budget, taxes_paid=10489) {
                             return percentFormat(d.val*100) + "%"
                         } else if (d.col == 'funds') {
                             return "$" + cashFormat(d.val)
-                        } else {
+                        } else  {
                             return d.val
                         }
                     });
