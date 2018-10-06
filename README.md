@@ -25,3 +25,4 @@ I have used dummy data to build this out and I am not yet certain how to gather 
  - Data : Find a reliable source of federal spending data that traces funds through major categories to individual programs.
  - Graph: Work on zoom in animation to make it more smooth and color schemes to convery information more meaningfully.
  - Mobile Friendly:  Develop sizing functions for graph and table to allow for a more mobile friendly graph.
+ - Budget Legend: BUild out a tree like legend that shows users the level they are drilled down to.  Each legend entry would trigger zooming to that level.
