@@ -50,3 +50,19 @@ tr.highlighted {
     background-color: #b3e5fc;
     font-weight: bold;
 }
+
+/*
+--------------------------------------------------------------
+Materialze CSS Stick Footer Settings
+--------------------------------------------------------------
+*/
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
