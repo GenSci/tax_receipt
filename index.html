@@ -1,120 +1,136 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head>
-        <meta charset="UTF-8">
-        <title>Tax Receipt Proposal</title>
-          <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-        <link rel="stylesheet" href="static/materialize.min.css">
-        <link rel="stylesheet" href="static/index.css">
-    </head>
-    <body>
-        <!-- Header Section -->
-        <header>
-            <nav class="nav-wrapper blue lighten-3">
-                <div class="container  right-align ">
-                    <a href="https://github.com/GenSci/tax_receipt" class="indigo-text text-darken-4">
-                        <i class="fab fa-github"> </i>
-                        Go To Repo
-                    </a>
-                </div>
-            </nav>
-        </header>
-        <!-- main content -->
-        <main>
-            <div class="container">
-                <div class="row">
-                    <div class="col s12 center-align">
-                        <h4>Proposed Tax Receipt</h4>
-                        <div class="divider"></div>
-                        <p>The purpose of this web page is to demontrate a proposal for a receipt that each U.S. tax payer should be able to access for every year they pay their taxes.  The concept is that the amount paid by each citizen should be broken down into the major categories => individual programs that are funded by those taxes.  An ultimate goal of the drill down would be to get to individual bills in either the House or Senate.  This level of transparency, it is hoped, would foster more informed discussions between members of Congress and their constituents as well as a greater sense of involvement for tax payers in the programs they fund.</p>
-                        <p class="disclaimer">
-                            All data presented here is not accurate.  Neither the bills/laws cited nor dollar figures are strictly accurate.  Data is presented here only to demonstrate the potential for this data visualization.
-                        </p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col s3 input-field">
-                        <i class="material-icons prefix">attach_money</i>
-                        <input type="number" id="taxes_paid" value="10489">
-                        <label for="#taxes_paid">Taxes Paid</label>
-                    </div>
-                    <div class="col s3 input-field">
-                        <button id="update_graph" class="btn gd-green" name="button">Update Graph</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div id="graph_col" class="col s12">
-                        <svg id="tax_graph" height="500", width="800"></svg>
-                    </div>
-                </div>
-                <div id="tax_table" class="row">
-                    <!-- Table to tax spending goes here -->
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tax Receipt Proposal</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="static/materialize.min.css">
+    <link rel="stylesheet" href="static/index.css">
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <nav class="nav-wrapper blue lighten-3">
+            <div class="container  right-align ">
+                <a href="https://github.com/GenSci/tax_receipt" class="indigo-text text-darken-4">
+                    <i class="fab fa-github"> </i>
+                    Go To Repo
+                </a>
+            </div>
+        </nav>
+    </header>
+    <!-- main content -->
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col s12 center-align">
+                    <h4>Proposed Tax Receipt</h4>
+                    <div class="divider"></div>
+                    <p>The purpose of this web page is to demontrate a proposal for a receipt that each U.S. tax payer
+                        should be able to access for every year they pay their taxes. The concept is that the amount
+                        paid by each citizen should be broken down into the major categories => individual programs
+                        that are funded by those taxes. An ultimate goal of the drill down would be to get to
+                        individual bills in either the House or Senate. This level of transparency, it is hoped, would
+                        foster more informed discussions between members of Congress and their constituents as well as
+                        a greater sense of involvement for tax payers in the programs they fund.</p>
+                    <p class="disclaimer">
+                        All data presented here is not accurate. Neither the bills/laws cited nor dollar figures are
+                        strictly accurate. Data is presented here only to demonstrate the potential for this data
+                        visualization.
+                    </p>
                 </div>
             </div>
-        </main>
-        <!-- Footer Section -->
-        <footer class="page-footer blue lighten-3">
-            <div class="container ">
-                <div class="row">
-                    <div class="col l6 s12 center-align">
-                        <h5 class="white-text">Concerned?</h5>
-                        <p class="grey-text text-lighten-4">THe purpose of this site is to promote a more informed conversation between citizens and their representatives.  To that end, if you are concerned by the spending shown here and the priorities implied, contact them.</p>
-                        <a href="https://democracy.io" class="btn gd-purple">Democracy.io</a>
-                    </div>
-                    <div class="col l6 s12 center-align">
-                        <h5 class="white-text">Want to Help?</h5>
-                        <p class="grey-text text-lighten-4">
-                            If this project is something you would like to contribute to you can reach out and see where we can incorporate your contributions.
-                        </p>
-                        <ul class="">
-                            <li>
-                                <a href="mailto:ryan@gensci.org" class="grey-text text-lighten-3">
-                                    <i class="material-icons">
-                                        email
-                                    </i>
-                                    Email
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.linkedin.com/in/ryan-manzer-8a257129/" class="grey-text text-lighten-3">
-                                    <i class="fab fa-linkedin"></i> LinkdIn
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://github.com/GenSci" class="grey-text text-lighten-3">
-                                    <i class="fab fa-github"></i>
-                                    GenSci Github
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+            <div class="row">
+                <div class="col s3 input-field">
+                    <i class="material-icons prefix">attach_money</i>
+                    <input type="number" id="taxes_paid" value="10489">
+                    <label for="#taxes_paid">Taxes Paid</label>
+                </div>
+                <div class="col s3 input-field">
+                    <button id="update_graph" class="btn gd-green" name="button">Update Graph</button>
                 </div>
             </div>
-            <div class="footer-copyright blue lighten-2">
-                <div class="container center-align">
-                    &copy; 2018 C. Ryan Manzer
+            <div class="row">
+                <div id="graph_col" class="col s12">
+                    <svg id="tax_graph" height="500" , width="800"></svg>
                 </div>
             </div>
-        </footer>
+            <div id="tax_table" class="row">
+                <!-- Table to tax spending goes here -->
+            </div>
+        </div>
+    </main>
+    <!-- Footer Section -->
+    <footer class="page-footer blue lighten-3">
+        <div class="container ">
+            <div class="row">
+                <div class="col l6 s12 center-align">
+                    <h5 class="white-text">Concerned?</h5>
+                    <p class="grey-text text-lighten-4">THe purpose of this site is to promote a more informed
+                        conversation between citizens and their representatives. To that end, if you are concerned by
+                        the spending shown here and the priorities implied, contact them.</p>
+                    <a href="https://democracy.io" class="btn gd-purple">Democracy.io</a>
+                </div>
+                <div class="col l6 s12 center-align">
+                    <h5 class="white-text">Want to Help?</h5>
+                    <p class="grey-text text-lighten-4">
+                        If this project is something you would like to contribute to you can reach out and see where we
+                        can incorporate your contributions.
+                    </p>
+                    <ul class="">
+                        <li>
+                            <a href="mailto:ryan@gensci.org" class="grey-text text-lighten-3">
+                                <i class="material-icons">
+                                    email
+                                </i>
+                                Email
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/in/ryan-manzer-8a257129/" class="grey-text text-lighten-3">
+                                <i class="fab fa-linkedin"></i> LinkdIn
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://github.com/GenSci" class="grey-text text-lighten-3">
+                                <i class="fab fa-github"></i>
+                                GenSci Github
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright blue lighten-2">
+            <div class="container center-align">
+                &copy; 2018 C. Ryan Manzer
+            </div>
+        </div>
+    </footer>
     <script src="static/materialize.min.js" charset="utf-8"></script>
     <!-- <script src="static/d3.min.js" charset="utf-8"></script> -->
 
-     <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="https://d3js.org/d3-color.v1.min.js"></script>
-<script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
-<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+    <script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+    <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
     <script src="static/index.js" charset="utf-8"></script>
     <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function(){
+        
+        document.addEventListener('DOMContentLoaded', function () {
             var resp = fetch('static/data.json')
-                        .then(resp => resp.json())
-                        .then(budget => {
-                            drawGraphPie(budget);
-                            drawTable(budget);
-                        })
-            assignGraph();
+                .then(resp => resp.json())
+                .then(budget => {
+                    graphModule.drawGraphPie(budget);
+                    graphModule.drawTable(budget);
+                })
+            graphModule.assignGraph();
         })
     </script>
-    </body>
+</body>
+
 </html>
